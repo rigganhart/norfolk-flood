@@ -1,0 +1,30 @@
+{
+  "name": "norfolk-flood",
+  "version": "1.0.0",
+  "description": "norfolk flood dehackathon 2016",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rigganhart/norfolk-flood.git"
+  },
+  "keywords": [
+    "sea",
+    "level",
+    "rise",
+    "awareness"
+  ],
+  "author": "Jason Wilson, Tim Dunbar, Deb Martin, Riggan Hart, Roy Wilson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rigganhart/norfolk-flood/issues"
+  },
+  "homepage": "https://github.com/rigganhart/norfolk-flood#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mongodb": "^2.2.12"
+  }
+}
