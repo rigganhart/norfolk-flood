@@ -16,8 +16,11 @@
   </head>
   <body>
     <div ng-controller='userIncomeController' class="userIncome">
-      <input ng-model='userIncome' type="text" name="" value="" placeholder="Your Income">
 
+      <!-- income value selector will need to update the options -->
+      <select ng-model='incomeLevel' ng-options='item as item.name for item in items' class="userIncome" name="">
+
+      </select>
       <h1>Your Income: {{userIncome}}</h1>
     </div>
   </body>
