@@ -1,0 +1,7 @@
+#logs
+logs
+*.log
+npm-debug.log*
+
+#codekit
+config.codekit3
