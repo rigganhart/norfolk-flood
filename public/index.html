@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app='Norfolk-Flood'>
+  <head>
+    <meta charset="utf-8">
+    <title>Norfolk Flood</title>
+
+
+    <!-- Angular 1.5 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- JS -->
+    <script type="text/javascript" src='app.js'></script>
+
+  </head>
+  <body>
+    <div ng-controller='userIncomeController' class="userIncome">
+      <input ng-model='userIncome' type="text" name="" value="" placeholder="Your Income">
+
+      <h1>Your Income: {{userIncome}}</h1>
+    </div>
+  </body>
+</html>
