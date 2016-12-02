@@ -22,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/rigganhart/norfolk-flood/issues"
   },
-  "homepage": "https://github.com/rigganhart/norfolk-flood#readme"
+  "homepage": "https://github.com/rigganhart/norfolk-flood#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mongodb": "^2.2.12"
+  }
 }
