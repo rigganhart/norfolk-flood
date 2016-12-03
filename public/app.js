@@ -27,25 +27,25 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
       {
         level: '0.00',
         levelName: 'NONE',
-        cost: toCost( $scope.incomeLevel, incomeRange[0]['0m'] ),
+        cost: $scope.toCost( $scope.incomeLevel, incomeRange[0]['0m'] ),
         message: 'If the sea level stays the same, you are predicted to lose $' + toCost( $scope.incomeLevel, incomeRange[0]['0m'] )
       },
       {
         level: '0.50',
         levelName: 'LOW',
-        cost: toCost( $scope.incomeLevel, incomeRange[0]['5m'] ),
+        cost: $scope.toCost( $scope.incomeLevel, incomeRange[0]['5m'] ),
         message: 'In the worst-case seal level rise scenario, you are predicted to lose $' + ptoCost( $scope.incomeLevel, incomeRange[0]['5m'] )
       },
       {
         level: '0.75',
         levelName: 'HIGH',
-        cost: toCost( $scope.incomeLevel, incomeRange[0]['75m'] ),
+        cost: $scope.toCost( $scope.incomeLevel, incomeRange[0]['75m'] ),
         message: 'In the worst-case sea level rise scenario, you are predicted to lose $' + toCost( $scope.incomeLevel, incomeRange[0]['75m'] )
       }
     ];
   };
 
-  var toCost = function (income, lossFactor) {
+  $scope.toCost = function (income, lossFactor) {
     return parseFloat(income).toFixed(0) * ( parseFloat(lossFactor) / 100 );
   }
 
