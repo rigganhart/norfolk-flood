@@ -1,4 +1,4 @@
-let app = angular.module('Norfolk-Flood',[]);
+var app = angular.module('Norfolk-Flood',[]);
 
 
 // User Input Controller:
@@ -8,8 +8,18 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
   $scope.realData = dataService.getRealData();
   $scope.rangeData = dataService.getIncomeRanges();
   $scope.incomeSubmitted = false;
+  $scope.showMain = true;
+  $scope.showThanks = false;
   
-  
+  $scope.setAssessment = function ( scenario ) {
+    console.log( "Setting", scenario);
+    dataService.setReactionData( {
+      income: parseFloat($scope.incomeLevel), 
+      response: scenario 
+    });
+    $scope.showMain = false;
+    $scope.showThanks = true;
+  } 
   
   $scope.getIncomeImpact = function() {
     $scope.toCost = function (income, lossFactor) {
@@ -17,16 +27,15 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
     };
     //Identify income range and calculate flood impact values
     $scope.incomeSubmitted = true;
-    console.log($scope.incomeSubmitted);
-    
-    var incomeLevel = parseFloat($scope.incomeLevel);
+    console.log($scope.incomeLevel);
+    var incomeLevel = parseFloat($scope.incomeLevel.replace(/,/g,''));
     var incomeRange = [];
-    
+    console.log(incomeLevel);
     if( incomeLevel > 999999 ) {
       incomeRange = [$scope.rangeData[8]];
     } else {
       incomeRange = $scope.rangeData.filter( function(range) {
-        return incomeLevel >= range['min'] && incomeLevel <= range['maxUpTo']; 
+        return incomeLevel >= range['min'] && incomeLevel < range['maxUpTo']; 
       });
     }
     console.log("lookie");
@@ -37,20 +46,20 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
       {
         level: '0.00',
         levelName: 'NONE',
-        cost: $scope.toCost( $scope.incomeLevel, incomeRange[0]['0m'] ),
-        message: 'If the sea level stays the same, you are predicted to lose $' + $scope.toCost( $scope.incomeLevel, incomeRange[0]['0m'] )
+        cost: $scope.toCost( incomeLevel, incomeRange[0]['0m'] ),
+        message: 'If the sea level stays the same, you are predicted to lose $' + $scope.toCost( incomeLevel, incomeRange[0]['0m'] )
       },
       {
         level: '0.50',
         levelName: 'LOW',
-        cost: $scope.toCost( $scope.incomeLevel, incomeRange[0]['5m'] ),
-        message: 'In the worst-case seal level rise scenario, you are predicted to lose $' + $scope.toCost( $scope.incomeLevel, incomeRange[0]['5m'] )
+        cost: $scope.toCost( incomeLevel, incomeRange[0]['5m'] ),
+        message: 'In the worst-case seal level rise scenario, you are predicted to lose $' + $scope.toCost( incomeLevel, incomeRange[0]['5m'] )
       },
       {
         level: '0.75',
         levelName: 'HIGH',
-        cost: $scope.toCost( $scope.incomeLevel, incomeRange[0]['75m'] ),
-        message: 'In the worst-case sea level rise scenario, you are predicted to lose $' + $scope.toCost( $scope.incomeLevel, incomeRange[0]['75m'] )
+        cost: $scope.toCost( incomeLevel, incomeRange[0]['75m'] ),
+        message: 'In the worst-case sea level rise scenario, you are predicted to lose $' + $scope.toCost( incomeLevel, incomeRange[0]['75m'] )
       }
     ];
   };
@@ -94,6 +103,16 @@ app.factory('dataService', ['$http',function($http){
         angular.copy(response.data,realData);
       });
       return realData;
+    },
+    setReactionData : function( reaction ){
+      $http({
+        method: 'POST',
+        url: '/real',
+        data: reaction
+      }).then(function(response){
+        console.log("response data to server",response);
+      });
+      return true;
     }
   };
 

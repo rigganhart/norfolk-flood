@@ -20,42 +20,52 @@
   <body>
     <div ng-controller='userIncomeController' class="userIncome">
 	    
-      <p class="lead">Research shows that rising sea levels would negatively impact incomes in Hampton Roads&#8224;.</p>
+      <div id="wrapper" class="tk-english-grotesque">
+        <div ng-show="showMain">
+          <p class="lead">Research shows that rising sea levels would negatively impact incomes in Hampton Roads&#8224;.</p>
       
-      <p>How much do I stand to lose if my household currently makes <span class="input-group"><span class="input-group-addon">$</span><input type="text" class="userIncome form-control" placeholder="51000" ng-model='incomeLevel'  name="incomeLevel" autofocus ></span></p>
+          <p>How much do I stand to lose if my household currently makes <span class="input-group"><span class="input-group-addon">$</span><input type="text" class="userIncome form-control" placeholder="51000" ng-model='incomeLevel'  name="incomeLevel" autofocus ></span></p>
       
-      <button class="btn btn-primary" ng-click="getIncomeImpact()">Show Me</button>
-      <div ng-show="incomeSubmitted">
-        <div class="outcome-large" ng-repeat="flood in outcomes">
-          <img src="img/{{flood.levelName}}.png" class="floodState-large"/>
-          <h1>{{flood.level}}<small>m</small></h1>
-          <p>{{flood.message}}</p>
-        </div>
+          <button class="btn btn-primary" ng-click="getIncomeImpact()">Show Me</button>
+          <div ng-show="incomeSubmitted">
+            <div class="outcome-large" ng-repeat="flood in outcomes">
+              <img src="img/{{flood.levelName}}.png" class="floodState-large"/>
+              <h1>{{flood.level}}<small>m</small></h1>
+              <p>{{flood.message}}</p>
+            </div>
       
-        <div class="inquiry">
+            <div class="inquiry">
         
-          <p>Which of these outcomes do you think is more likely?</p>
-          <div class="outcome-small" ng-repeat='flood in outcomes'>
-          
-            <a ng-click="">
-              <img src="img/{{flood.levelName}}.png" class="floodState-small"/>
-            </a>
-            <a ng-click="" class="small">
-              {{flood.cost}}
-            </a>
+              <p>Which of these outcomes do you think is more likely?</p>
+              <div class="outcome-small" ng-repeat='flood in outcomes'>
+            
+                <a ng-click="setAssessment(flood.levelName);">
+                  <img src="img/{{flood.levelName}}.png" class="floodState-small"/>
+                </a>
+                <a ng-click="setAssessment(flood.levelName);" class="small">
+                  {{flood.cost}}
+                </a>
+              </div>
+        
+              <a ng-click="setAssessment('DISAGREE');" class="small">None of these scenarios seem likely.</a>
+        
+            </div>
           </div>
-        
-          <a ng-click="" class="small">None of these scenarios seem likely.</a>
-        
+      
+          <p class="small">
+            &#8224;Estimates from the report "Costs of Doing Nothing: Economic Consequences of Not Adapting to Sea Level Rise in the Hampton Roads Region"
+          </p>
+          
+        </div>
+        <div ng-show="showThanks">
+          <p>Thanks</p>
         </div>
       </div>
       
-      <p class="small">
-        &#8224;Estimates from the report "Costs of Doing Nothing: Economic Consequences of Not Adapting to Sea Level Rise in the Hampton Roads Region"
-      </p>
-          
     </div>
     
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://use.typekit.net/cmg2gey.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
   </body>
 </html>
