@@ -29,9 +29,9 @@
       </form>
     
       <div class="outcome-large" ng-repeat='outcome in outcomes' ng-show='frmIncome.$submitted'>
-        <img src="img/{{flood.floodLevelName}}.png" class="floodState-large"/>
-        <h1>{{flood.floodLevel}}<small>m</small></h1>
-        <p>{{flood.floodLevelMessage}}</p>
+        <img src="img/{{flood.levelName}}.png" class="floodState-large"/>
+        <h1>{{flood.level}}<small>m</small></h1>
+        <p>{{flood.message}}</p>
       </div>
       
       <div class="inquiry">
@@ -40,10 +40,10 @@
         <div class="outcome-small" ng-repeat='outcome in outcomes'>
           
           <a ng-click="">
-            <img src="img/{{flood.floodLevelName}}.png" class="floodState-small"/>
+            <img src="img/{{flood.levelName}}.png" class="floodState-small"/>
           </a>
           <a ng-click="" class="small">
-            {{flood.floodCost}}
+            {{flood.cost}}
           </a>
         </div>
         
