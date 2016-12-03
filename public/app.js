@@ -47,7 +47,7 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
 
   $scope.toCost = function (income, lossFactor) {
     return parseFloat(income).toFixed(0) * ( parseFloat(lossFactor) / 100 );
-  }
+  };
 
 }]);
 
