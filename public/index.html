@@ -24,9 +24,10 @@
         <div ng-show="showMain">
           <p class="lead">Research shows that rising sea levels would negatively impact incomes in Hampton Roads&#8224;.</p>
       
-          <p>How much do I stand to lose if my household currently makes <span class="input-group"><span class="input-group-addon">$</span><input type="text" class="userIncome form-control" placeholder="51000" ng-model='incomeLevel'  name="incomeLevel" autofocus ></span></p>
+          <p>How much do I stand to lose if my household currently makes <span class="input-group form-inline"><span class="input-group-addon">$</span><input type="text" class="userIncome" placeholder="51000" ng-model='incomeLevel'  name="incomeLevel" autofocus ></span></p>
       
-          <button class="btn btn-primary" ng-click="getIncomeImpact()">Show Me</button>
+          <button class="btn" ng-click="getIncomeImpact()">Show Me</button>
+          
           <div ng-show="incomeSubmitted">
             <div class="outcome-large" ng-repeat="flood in outcomes">
               <img src="img/{{flood.levelName}}.png" class="floodState-large"/>
