@@ -13,7 +13,7 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
   
   $scope.getIncomeImpact = function() {
     $scope.toCost = function (income, lossFactor) {
-      return parseFloat(income).toFixed(0) * ( parseFloat(lossFactor) / 100 );
+      return (parseFloat(income) * ( parseFloat(lossFactor) / 100 )).toFixed(0);
     };
     //Identify income range and calculate flood impact values
     $scope.incomeSubmitted = true;
