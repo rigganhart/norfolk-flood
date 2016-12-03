@@ -47,7 +47,7 @@ app.factory('dataService', ['$http',function($http){
         console.log("income ranges from server",response);
         angular.copy(response.data,rangeData);
       });
-      return simData;
+      return rangeData;
     },
     getSimData : function(){
       $http({
