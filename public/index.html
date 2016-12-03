@@ -20,13 +20,9 @@
   <body>
     <div ng-controller='userIncomeController' class="userIncome">
 	    
-      <div id="wrapper" ng-switch="$scope.complete">
-        <div ng-switch-when="true">
-          <ng-include src="_thanks.html"></ng-include>
-        </div>
-        <div ng-switch-default>
-          <ng-include src="_main.html"></ng-include>
-        </div>
+      <div id="wrapper">
+        <div ng-include="'_main.html'" ng-show="showMain"></div>
+        <div ng-include="'_thanks.html'" ng-show="showThanks"></div>
       </div>
       
     </div>

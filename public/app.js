@@ -8,7 +8,8 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
   $scope.realData = dataService.getRealData();
   $scope.rangeData = dataService.getIncomeRanges();
   $scope.incomeSubmitted = false;
-  $scope.completed = false;
+  $scope.showMain = true;
+  $scope.showThanks = false;
   
   $scope.setAssessment = function ( scenario ) {
     console.log( "Setting", scenario);
@@ -16,7 +17,8 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
       income: parseFloat($scope.incomeLevel), 
       response: scenario 
     });
-    $scope.completed = true;
+    $scope.showMain = false;
+    $scope.showThanks = true;
   } 
   
   $scope.getIncomeImpact = function() {
