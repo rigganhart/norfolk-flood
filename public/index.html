@@ -2,30 +2,61 @@
 <html ng-app='Norfolk-Flood'>
   <head>
     <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Norfolk Flood</title>
 
-
+	
     <!-- Angular 1.5 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
 
     <!-- custom css -->
     <link rel="stylesheet" href="styles.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
     <!-- JS -->
     <script type="text/javascript" src='app.js'></script>
 
   </head>
   <body>
     <div ng-controller='userIncomeController' class="userIncome">
-
-      <!-- income value selector will need to update the options -->
-      <select ng-model='incomeLevel' ng-options='item as item.name for item in items' class="userIncome" name="">
-
-      </select>
-
-      <div class="simulated" ng-repeat='sim in simulatedData'>
-        <h3>income: {{sim.income}} and Response: {{sim.response}}</h3>
+	    
+      <p class="lead">Research shows that rising sea levels would negatively impact incomes in Hampton Roads&#8224;.</p>
+      
+      <form name="frmIncome" ng-submit="calculateLoss();" novalidate>
+        <p>How much do I stand to lose if my household currently makes <span class="input-group"><span class="input-group-addon">$</span><input type="text" class="userIncome form-control" placeholder="51000" ng-model='incomeLevel'  name="incomeLevel" autofocus ></span></p>
+      
+        <button type="submit" class="btn btn-primary">Show Me</button>
+      </form>
+    
+      <div class="outcome-large" ng-repeat='outcome in outcomes' ng-show='frmIncome.$submitted'>
+        <img src="img/{{flood.floodLevelName}}.png" class="floodState-large"/>
+        <h1>{{flood.floodLevel}}<small>m</small></h1>
+        <p>{{flood.floodLevelMessage}}</p>
       </div>
-      <h1>Your Income: {{userIncome}}</h1>
+      
+      <div class="inquiry">
+        
+        <p>Which of these outcomes do you think is more likely?</p>
+        <div class="outcome-small" ng-repeat='outcome in outcomes'>
+          
+          <a ng-click="">
+            <img src="img/{{flood.floodLevelName}}.png" class="floodState-small"/>
+          </a>
+          <a ng-click="" class="small">
+            {{flood.floodCost}}
+          </a>
+        </div>
+        
+        <a ng-click="" class="small">None of these scenarios seem likely.</a>
+        
+      </div>
+      
+      <p class="small">
+        &#8224;Estimates from the report "Costs of Doing Nothing: Economic Consequences of Not Adapting to Sea Level Rise in the Hampton Roads Region"
+      </p>
+          
     </div>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>
 </html>
