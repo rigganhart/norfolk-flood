@@ -35,7 +35,7 @@ app.factory('dataService', ['$http',function($http){
     getIncomeRanges : function(){
       $http({
         method: 'GET',
-        url: '/ranges'
+        url: '/rincome'
       }).then(function(response){
         console.log("income ranges from server",response);
         angular.copy(response.data,rangeData)
