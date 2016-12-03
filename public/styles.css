@@ -1,0 +1,26 @@
+body {
+  width: 100vw;
+  height: 100vh; }
+
+#wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #C7C6C4;
+  font-size: 32pt;
+  color: #57B5B6; }
+
+.lead {
+  color: #008E90;
+  font-size: 32pt !important; }
+
+.input-group {
+  background: #C7C6C4;
+  border: 2px solid #57B5B6;
+  width: 120px; }
+  .input-group .input-group-addon, .input-group input, .input-group .form-control {
+    -webkit-appearance: none;
+    background: transparent;
+    border-radius: 0;
+    border: 0;
+    box-shadow: 0; }
