@@ -9,43 +9,53 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
   $scope.rangeData = dataService.getIncomeRanges();
   $scope.incomeSubmitted = false;
   
+  
+  
   $scope.getIncomeImpact = function() {
+    $scope.toCost = function (income, lossFactor) {
+      return (parseFloat(income) * ( parseFloat(lossFactor) / 100 )).toFixed(0);
+    };
     //Identify income range and calculate flood impact values
     $scope.incomeSubmitted = true;
     console.log($scope.incomeSubmitted);
     
     var incomeLevel = parseFloat($scope.incomeLevel);
+    var incomeRange = [];
     
-    var incomeRange = $scope.rangeData.filter( function(range) {
-      return incomeLevel >= range['Min'] && incomeLevel <= range['MaxUpTo']; 
-    });
+    if( incomeLevel > 999999 ) {
+      incomeRange = [$scope.rangeData[8]];
+    } else {
+      incomeRange = $scope.rangeData.filter( function(range) {
+        return incomeLevel >= range['min'] && incomeLevel <= range['maxUpTo']; 
+      });
+    }
     console.log("lookie");
-    console.log(incomeRange[0]);
+    console.log(incomeRange);
     console.log(incomeRange[0]['0m']);
     console.log(parseFloat( incomeRange[0]['0m'] ));
     $scope.outcomes = [
       {
         level: '0.00',
         levelName: 'NONE',
-        cost: $scope.incomeLevel * ( parseFloat( incomeRange[0]['0m'] ) / 100 ),
-        message: 'If the sea level stays the same, you are predicted to lose $' + parseFloat($scope.incomeLevel * incomeRange['0m']).toFixed(0)
+        cost: $scope.toCost( $scope.incomeLevel, incomeRange[0]['0m'] ),
+        message: 'If the sea level stays the same, you are predicted to lose $' + $scope.toCost( $scope.incomeLevel, incomeRange[0]['0m'] )
       },
       {
         level: '0.50',
         levelName: 'LOW',
-        cost: $scope.incomeLevel * ( parseFloat( incomeRange[0][0]['5m'] ) / 100 ),
-        message: 'In the worst-case seal level rise scenario, you are predicted to lose $' + parseFloat($scope.incomeLevel * incomeRange['0m']).toFixed(0)
+        cost: $scope.toCost( $scope.incomeLevel, incomeRange[0]['5m'] ),
+        message: 'In the worst-case seal level rise scenario, you are predicted to lose $' + $scope.toCost( $scope.incomeLevel, incomeRange[0]['5m'] )
       },
       {
         level: '0.75',
         levelName: 'HIGH',
-        cost: $scope.incomeLevel * ( parseFloat( incomeRange[0][0]['75m'] ) / 100 ),
-        message: 'In the worst-case sea level rise scenario, you are predicted to lose $' + parseFloat($scope.incomeLevel * incomeRange['0m']).toFixed(0)
+        cost: $scope.toCost( $scope.incomeLevel, incomeRange[0]['75m'] ),
+        message: 'In the worst-case sea level rise scenario, you are predicted to lose $' + $scope.toCost( $scope.incomeLevel, incomeRange[0]['75m'] )
       }
     ];
   };
 
-
+  
 
 }]);
 
