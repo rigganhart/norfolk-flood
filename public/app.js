@@ -11,6 +11,7 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
   $scope.getIncomeImpact = function() {
     //Identify income range and calculate flood impact values
     console.log($scope.incomeLevel);
+    $scope.incomeSubmitted = true;
     
     var incomeRange = $scope.rangeData.filter( function(range) {
       $scope.incomeLevel >= range['Min'] && $scope.incomeLevel <= range['MaxUpTo']; 

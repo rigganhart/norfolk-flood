@@ -26,7 +26,7 @@
       
       <button class="btn btn-primary" ng-click="getIncomeImpact()">Show Me</button>
       
-      <div class="outcome-large" ng-repeat='outcome in outcomes' ng-show='frmIncome.$submitted'>
+      <div class="outcome-large" ng-repeat='outcome in outcomes' ng-show='$scope.incomeSubmitted'>
         <img src="img/{{flood.levelName}}.png" class="floodState-large"/>
         <h1>{{flood.level}}<small>m</small></h1>
         <p>{{flood.message}}</p>
