@@ -7,3 +7,5 @@ Our app seeks to aid city personnel responsible for planning and marketing area-
 
 ##Data Sources
 Economic Impact data from ["Final Report Hampton Roads SLR" Table 4-1]( https://norfolkflood.slack.com/files/timdunbar/F39P95T1T/final_report_hampton_roads_slr_.pdf)
+
+[Costs of doing nothing: Economic consequences of not adapting to sea level rise in the Hampton Roads region [Prepared for the Virginia Coastal Policy Center/College of William & Mary Law School]] (https://www.rti.org/publication/costs-doing-nothing-economic-consequences-not-adapting-sea-level-rise-hampton-roads)
