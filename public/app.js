@@ -16,13 +16,15 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
     var incomeRange = $scope.rangeData.filter( function(range) {
       $scope.incomeLevel >= range['Min'] && $scope.incomeLevel <= range['MaxUpTo']; 
     });
-    
-    $scope.flood = {
-      level: '0.0',
-      levelName: 'NONE',
-      cost: $scope.incomeLevel * incomeRange['0m'],
-      message: 'If the sea level stays the same, you can expect to lose $' + parseFloat($scope.incomeLevel * incomeRange['0m']).toFixed(0)
-    };
+    console.log(incomeRange);
+    $scope.outcomes = [
+      {
+        level: '0.0',
+        levelName: 'NONE',
+        cost: $scope.incomeLevel * incomeRange['0m'],
+        message: 'If the sea level stays the same, you can expect to lose $' + parseFloat($scope.incomeLevel * incomeRange['0m']).toFixed(0)
+      }
+    ];
   };
 
 
