@@ -14,7 +14,7 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
     $scope.incomeSubmitted = true;
     console.log($scope.incomeSubmitted);
     
-    var incomeLevel = parseFloat($scope.incomeLevel)
+    var incomeLevel = parseFloat($scope.incomeLevel);
     
     var incomeRange = $scope.rangeData.filter( function(range) {
       return incomeLevel >= range['Min'] && incomeLevel <= range['MaxUpTo']; 
@@ -41,7 +41,6 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
         message: 'In the worst-case sea level rise scenario, you are predicted to lose $' + parseFloat($scope.incomeLevel * incomeRange['0m']).toFixed(0)
       }
     ];
-    $scope.$digest();
   };
 
 
