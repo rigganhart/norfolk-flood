@@ -9,7 +9,7 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
   $scope.rangeData = dataService.getIncomeRanges();
   $scope.incomeSubmitted = false;
   
-  $scope.setAssesment = function ( scenario ) {
+  $scope.setAssessment = function ( scenario ) {
     console.log( "Setting", scenario);
     dataService.setReactionData( {
       income: parseFloat($scope.incomeLevel), 
