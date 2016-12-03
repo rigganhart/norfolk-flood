@@ -20,7 +20,8 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
       return incomeLevel >= range['Min'] && incomeLevel <= range['MaxUpTo']; 
     });
     
-    console.log(incomeRange);
+    console.log(incomeRange['0m']);
+    console.log(parseFloat( incomeRange['0m'] ));
     $scope.outcomes = [
       {
         level: '0.00',
