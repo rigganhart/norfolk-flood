@@ -21,6 +21,10 @@
       <select ng-model='incomeLevel' ng-options='item as item.name for item in items' class="userIncome" name="">
 
       </select>
+
+      <div class="simulated" ng-repeat='sim in simulatedData'>
+        <h3>income: {{sim.income}} and Response: {{sim.response}}</h3>
+      </div>
       <h1>Your Income: {{userIncome}}</h1>
     </div>
   </body>
