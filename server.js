@@ -54,3 +54,12 @@ app.get("/sim", function(req, res) {
     }
   });
 });
+app.get("/real", function(req, res) {
+  db.collection(Real_Collection).find({}).toArray(function(err, docs) {
+    if (err) {
+      handleError(res, err.message, "Failed to get real data.");
+    } else {
+      res.status(200).json(docs);
+    }
+  });
+});
