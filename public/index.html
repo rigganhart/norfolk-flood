@@ -22,12 +22,10 @@
 	    
       <p class="lead">Research shows that rising sea levels would negatively impact incomes in Hampton Roads&#8224;.</p>
       
-      <form name="frmIncome" ng-submit="$scope.getIncomeImpact;" novalidate>
-        <p>How much do I stand to lose if my household currently makes <span class="input-group"><span class="input-group-addon">$</span><input type="text" class="userIncome form-control" placeholder="51000" ng-model='incomeLevel'  name="incomeLevel" autofocus ></span></p>
+      <p>How much do I stand to lose if my household currently makes <span class="input-group"><span class="input-group-addon">$</span><input type="text" class="userIncome form-control" placeholder="51000" ng-model='incomeLevel'  name="incomeLevel" autofocus ></span></p>
       
-        <button type="submit" class="btn btn-primary">Show Me</button>
-      </form>
-    
+      <button class="btn btn-primary" ng-click="getIncomeImpact()">Show Me</button>
+      
       <div class="outcome-large" ng-repeat='outcome in outcomes' ng-show='frmIncome.$submitted'>
         <img src="img/{{flood.levelName}}.png" class="floodState-large"/>
         <h1>{{flood.level}}<small>m</small></h1>

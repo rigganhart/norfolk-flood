@@ -10,9 +10,10 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
   
   $scope.getIncomeImpact = function() {
     //Identify income range and calculate flood impact values
+    console.log($scope.incomeLevel);
     
     var incomeRange = $scope.rangeData.filter( function(range) {
-      $scope.incomeLevel >= range.Min && $scope.incomeLevel <= range.MaxUpTo; 
+      $scope.incomeLevel >= range['Min'] && $scope.incomeLevel <= range['MaxUpTo']; 
     });
     
     $scope.flood = {
@@ -20,8 +21,8 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
       levelName: 'NONE',
       cost: $scope.incomeLevel * incomeRange['0m'],
       message: 'If the sea level stays the same, you can expect to lose $' + parseFloat($scope.incomeLevel * incomeRange['0m']).toFixed(0)
-    }
-  }
+    };
+  };
 
 
 
@@ -30,16 +31,17 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
 app.factory('dataService', ['$http',function($http){
   var simData = [];
   var realData = [];
+  var rangeData = [];
 
   return{
     getIncomeRanges : function(){
       $http({
         method: 'GET',
-        url: '/rincome'
+        url: '/income'
       }).then(function(response){
         console.log("income ranges from server",response);
-        angular.copy(response.data,rangeData)
-      })
+        angular.copy(response.data,rangeData);
+      });
       return simData;
     },
     getSimData : function(){
@@ -48,8 +50,8 @@ app.factory('dataService', ['$http',function($http){
         url: '/sim'
       }).then(function(response){
         console.log("simulated data from server",response);
-        angular.copy(response.data,simData)
-      })
+        angular.copy(response.data,simData);
+      });
       return simData;
     },
     getRealData : function(){
@@ -58,10 +60,10 @@ app.factory('dataService', ['$http',function($http){
         url: '/real'
       }).then(function(response){
         console.log("real data from server",response);
-        angular.copy(response.data,realData)
-      })
+        angular.copy(response.data,realData);
+      });
       return realData;
     }
-  }
+  };
 
 }]);
