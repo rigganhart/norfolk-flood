@@ -36,11 +36,11 @@
         
           <p>Which of these outcomes do you think is more likely?</p>
           <div class="outcome-small" ng-repeat='flood in outcomes'>
-            {{flood.levelName}}
-            <a ng-click="setAssessment(flood.levelName)">
+            
+            <a ng-click="setAssessment(flood.levelName);">
               <img src="img/{{flood.levelName}}.png" class="floodState-small"/>
             </a>
-            <a ng-click="setAssessment(flood.levelName)" class="small">
+            <a ng-click="setAssessment(flood.levelName);" class="small">
               {{flood.cost}}
             </a>
           </div>
