@@ -1,5 +1,18 @@
-let app = angular.module('Norfolk-Flood',[]);
+var app = angular.module('Norfolk-Flood',['ui.router']);
 
+app.config(function($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise('/main');
+  
+  $stateProvider
+    .state('main', {
+      url: '/main',
+      templateUrl: '_main.html'
+    })
+    .state('thank-you', {
+      url: '/thank-you',
+      templateUrl: '_thanks.html'
+    });
+})
 
 // User Input Controller:
 app.controller('userIncomeController', ['$scope','$http', 'dataService', function($scope,$http, dataService){
@@ -15,6 +28,7 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
       income: parseFloat($scope.incomeLevel), 
       response: scenario 
     });
+    $state.go('.thank-you');
   } 
   
   $scope.getIncomeImpact = function() {
