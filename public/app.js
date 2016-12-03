@@ -14,7 +14,7 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
 app.factory('dataService', ['$http',function($http){
   var simData = [];
   var realData = [];
-  
+
   return{
     getSimData : function(){
       $http({
@@ -25,7 +25,7 @@ app.factory('dataService', ['$http',function($http){
         angular.copy(response.data,simData)
       })
       return simData;
-    }
+    },
     getRealData : function(){
       $http({
         method: 'GET',
