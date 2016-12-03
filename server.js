@@ -11,7 +11,7 @@ var localDB = 'mongodb://localhost:27017/hackdata'
 var Simulated_Collection = "simulated";
 var Real_Collection = "real";
 var Word_Cloud = "wordCloud";
-
+var Income_Collection = "incomeRange";
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -59,6 +59,16 @@ app.get("/real", function(req, res) {
   db.collection(Real_Collection).find({}).toArray(function(err, docs) {
     if (err) {
       handleError(res, err.message, "Failed to get real data.");
+    } else {
+      res.status(200).json(docs);
+    }
+  });
+});
+// get income levels
+app.get("/income", function(req, res) {
+  db.collection(Income_Collection).find({}).toArray(function(err, docs) {
+    if (err) {
+      handleError(res, err.message, "Failed to get income data.");
     } else {
       res.status(200).json(docs);
     }
