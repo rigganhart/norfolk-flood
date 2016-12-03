@@ -25,8 +25,7 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
     if( incomeLevel > 999999 ) {
       incomeRange = $scope.rangeData[8];
     } else {
-      var incomeRange = $scope.rangeData.filter( function(range) {
-        if( incomeLevel > )
+      incomeRange = $scope.rangeData.filter( function(range) {
         return incomeLevel >= range['min'] && incomeLevel <= range['maxUpTo']; 
       });
     }
