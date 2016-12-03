@@ -76,10 +76,21 @@ app.get("/income", function(req, res) {
 });
 // post real data
 app.post("/real", function(req, res) {
-	var newData = req.body;
-	db.collection(Real_Collection).insertOne(newData, function(err, doc) {
+	var word = req.body;
+	db.collection(Real_Collection).insertOne(word, function(err, doc) {
     if (err) {
       handleError(res, err.message, "Failed to create new data.");
+    } else {
+      res.status(201).json(doc.ops[0]);
+    }
+  });
+});
+// post to word cloud
+app.post("/wordCloud", function(req, res) {
+	var newData = req.body;
+	db.collection(Word_Cloud).insertOne(newData, function(err, doc) {
+    if (err) {
+      handleError(res, err.message, "Failed to create new word cloud word.");
     } else {
       res.status(201).json(doc.ops[0]);
     }
