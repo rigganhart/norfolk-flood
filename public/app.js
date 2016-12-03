@@ -27,7 +27,7 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
     };
     //Identify income range and calculate flood impact values
     $scope.incomeSubmitted = true;
-    
+    console.log($scope.incomeLevel);
     var incomeLevel = parseFloat($scope.incomeLevel);
     var incomeRange = [];
     console.log(incomeLevel);
