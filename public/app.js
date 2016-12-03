@@ -9,7 +9,12 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
   $scope.rangeData = dataService.getIncomeRanges();
   $scope.incomeSubmitted = false;
   
-  
+  $scope.setAssesment = function ( scenario ) {
+    dataService.setReactionData( {
+      income: parseFloat($scope.incomeLevel), 
+      response: scenario 
+    });
+  } 
   
   $scope.getIncomeImpact = function() {
     $scope.toCost = function (income, lossFactor) {
@@ -94,6 +99,16 @@ app.factory('dataService', ['$http',function($http){
         angular.copy(response.data,realData);
       });
       return realData;
+    },
+    setReactionData : function( reaction ){
+      $http({
+        method: 'POST',
+        url: '/real',
+        data: reaction
+      }).then(function(response){
+        console.log("response data to server",response);
+      });
+      return true;
     }
   };
 
