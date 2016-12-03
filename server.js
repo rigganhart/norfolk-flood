@@ -10,6 +10,8 @@ var localDB = 'mongodb://localhost:27017/hackdata'
 
 var Simulated_Collection = "simulated";
 var Real_Collection = "real";
+var Word_Cloud = "wordCloud";
+
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
