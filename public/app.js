@@ -41,6 +41,7 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
         message: 'In the worst-case sea level rise scenario, you are predicted to lose $' + parseFloat($scope.incomeLevel * incomeRange['0m']).toFixed(0)
       }
     ];
+    $scope.$digest();
   };
 
 
