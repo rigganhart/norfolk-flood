@@ -7,6 +7,7 @@ app.controller('userIncomeController', ['$scope','$http', 'dataService', functio
   $scope.simulatedData = dataService.getSimData(); //income, response
   $scope.realData = dataService.getRealData();
   $scope.rangeData = dataService.getIncomeRanges();
+  $scope.incomeSubmitted = false;
   
   $scope.getIncomeImpact = function() {
     //Identify income range and calculate flood impact values
