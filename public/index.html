@@ -25,7 +25,7 @@
       <p>How much do I stand to lose if my household currently makes <span class="input-group"><span class="input-group-addon">$</span><input type="text" class="userIncome form-control" placeholder="51000" ng-model='incomeLevel'  name="incomeLevel" autofocus ></span></p>
       
       <button class="btn btn-primary" ng-click="getIncomeImpact()">Show Me</button>
-      <div ng-show='$scope.incomeSubmitted'>
+      <div ng-show="$scope.incomeSubmitted">
         <div class="outcome-large" ng-repeat='outcome in $scope.outcomes'>
           <img src="img/{{flood.levelName}}.png" class="floodState-large"/>
           <h1>{{flood.level}}<small>m</small></h1>
