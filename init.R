@@ -1,5 +1,0 @@
-install.packages("wordcloud")
-install.packages("SnowballC")
-install.packages("tm")
-install.packages("jsonlite")
-install.packages("curl")
