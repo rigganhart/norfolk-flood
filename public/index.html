@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    
+
     <!-- JS -->
     <script type="text/javascript" src='app.js'></script>
 
@@ -23,11 +23,13 @@
 
       <div id="wrapper" class="tk-english-grotesque">
         <div ng-show="showMain">
-          <p class="lead">Research shows that rising sea levels would negatively impact incomes in Hampton Roads&#8224;.</p>
 
-          <p>How much do I stand to lose if my household currently makes <span class="input-group"><span class="input-group-addon">$</span><input type="text" class="userIncome form-control" placeholder="51000" ng-model='incomeLevel'  name="incomeLevel" autofocus ></span></p>
+          <p class="lead">Research shows that rising sea levels would negatively impact incomes in Hampton Roads<sup>&#8224;</sup>.</p>
 
-          <button class="btn btn-primary" ng-click="getIncomeImpact()">Show Me</button>
+          <p>How much do I stand to lose if my household currently makes <span class="input-group form-inline"><span class="input-group-addon">$</span><input type="text" class="userIncome" placeholder="51000" ng-model='incomeLevel'  name="incomeLevel" autofocus ></span></p>
+
+          <button class="btn" ng-click="getIncomeImpact()">Show Me</button>
+
           <div ng-show="incomeSubmitted">
             <div class="outcome-large" ng-repeat="flood in outcomes">
               <img src="img/{{flood.levelName}}.png" class="floodState-large"/>
